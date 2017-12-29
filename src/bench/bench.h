@@ -1,20 +1,22 @@
-// Copyright (c) 2015 The Bitcoin Core developers
+// Copyright (c) 2015-2016 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef BITCOIN_BENCH_BENCH_H
 #define BITCOIN_BENCH_BENCH_H
 
+#include <functional>
+#include <limits>
 #include <map>
 #include <string>
+#include <chrono>
 
-#include <boost/function.hpp>
 #include <boost/preprocessor/cat.hpp>
 #include <boost/preprocessor/stringize.hpp>
 
 // Simple micro-benchmarking framework; API mostly matches a subset of the Google Benchmark
 // framework (see https://github.com/google/benchmark)
-// Wny not use the Google Benchmark framework? Because adding Yet Another Dependency
+// Why not use the Google Benchmark framework? Because adding Yet Another Dependency
 // (that uses cmake as its build system and has lots of features we don't need) isn't
 // worth it.
 
@@ -35,34 +37,54 @@ BENCHMARK(CODE_TO_TIME);
  */
  
 namespace benchmark {
+    // In case high_resolution_clock is steady, prefer that, otherwise use steady_clock.
+    struct best_clock {
+        using hi_res_clock = std::chrono::high_resolution_clock;
+        using steady_clock = std::chrono::steady_clock;
+        using type = std::conditional<hi_res_clock::is_steady, hi_res_clock, steady_clock>::type;
+    };
+    using clock = best_clock::type;
+    using time_point = clock::time_point;
+    using duration = clock::duration;
 
     class State {
         std::string name;
-        double maxElapsed;
-        double beginTime;
-        double lastTime, minTime, maxTime, countMaskInv;
-        int64_t count;
-        int64_t countMask;
+        duration maxElapsed;
+        time_point beginTime, lastTime;
+        duration minTime, maxTime;
+        uint64_t count;
+        uint64_t countMask;
+        uint64_t beginCycles;
+        uint64_t lastCycles;
+        uint64_t minCycles;
+        uint64_t maxCycles;
     public:
-        State(std::string _name, double _maxElapsed) : name(_name), maxElapsed(_maxElapsed), count(0) {
-            minTime = std::numeric_limits<double>::max();
-            maxTime = std::numeric_limits<double>::min();
-            countMask = 1;
-            countMaskInv = 1./(countMask + 1);
+        State(std::string _name, duration _maxElapsed) :
+            name(_name),
+            maxElapsed(_maxElapsed),
+            minTime(duration::max()),
+            maxTime(duration::zero()),
+            count(0),
+            countMask(1),
+            beginCycles(0),
+            lastCycles(0),
+            minCycles(std::numeric_limits<uint64_t>::max()),
+            maxCycles(std::numeric_limits<uint64_t>::min()) {
         }
         bool KeepRunning();
     };
 
-    typedef boost::function<void(State&)> BenchFunction;
+    typedef std::function<void(State&)> BenchFunction;
 
     class BenchRunner
     {
-        static std::map<std::string, BenchFunction> benchmarks;
+        typedef std::map<std::string, BenchFunction> BenchmarkMap;
+        static BenchmarkMap &benchmarks();
 
     public:
         BenchRunner(std::string name, BenchFunction func);
 
-        static void RunAll(double elapsedTimeForOne=1.0);
+        static void RunAll(duration elapsedTimeForOne = std::chrono::seconds(1));
     };
 }
 

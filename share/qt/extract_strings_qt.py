@@ -1,11 +1,13 @@
-#!/usr/bin/python
+#!/usr/bin/env python
+# Copyright (c) 2012-2016 The Bitcoin Core developers
+# Distributed under the MIT software license, see the accompanying
+# file COPYING or http://www.opensource.org/licenses/mit-license.php.
 '''
 Extract _("...") strings for translation and convert to Qt stringdefs so that
 they can be picked up by Qt linguist.
 '''
 from __future__ import division,print_function,unicode_literals
 from subprocess import Popen, PIPE
-import glob
 import operator
 import os
 import sys
@@ -56,7 +58,7 @@ XGETTEXT=os.getenv('XGETTEXT', 'xgettext')
 if not XGETTEXT:
     print('Cannot extract strings: xgettext utility is not installed or not configured.',file=sys.stderr)
     print('Please install package "gettext" and re-run \'./configure\'.',file=sys.stderr)
-    exit(1)
+    sys.exit(1)
 child = Popen([XGETTEXT,'--output=-','-n','--keyword=_'] + files, stdout=PIPE)
 (out, err) = child.communicate()
 

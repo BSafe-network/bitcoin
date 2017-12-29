@@ -1,83 +1,105 @@
-// Copyright (c) 2015 The Bitcoin Core developers
+// Copyright (c) 2015-2016 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "bench.h"
+#include <bench/bench.h>
+#include <bench/perf.h>
 
+#include <assert.h>
 #include <iostream>
 #include <iomanip>
-#include <sys/time.h>
 
-using namespace benchmark;
-
-std::map<std::string, BenchFunction> BenchRunner::benchmarks;
-
-static double gettimedouble(void) {
-    struct timeval tv;
-    gettimeofday(&tv, NULL);
-    return tv.tv_usec * 0.000001 + tv.tv_sec;
+benchmark::BenchRunner::BenchmarkMap &benchmark::BenchRunner::benchmarks() {
+    static std::map<std::string, benchmark::BenchFunction> benchmarks_map;
+    return benchmarks_map;
 }
 
-BenchRunner::BenchRunner(std::string name, BenchFunction func)
+benchmark::BenchRunner::BenchRunner(std::string name, benchmark::BenchFunction func)
 {
-    benchmarks.insert(std::make_pair(name, func));
+    benchmarks().insert(std::make_pair(name, func));
 }
 
 void
-BenchRunner::RunAll(double elapsedTimeForOne)
+benchmark::BenchRunner::RunAll(benchmark::duration elapsedTimeForOne)
 {
-    std::cout << "#Benchmark" << "," << "count" << "," << "min" << "," << "max" << "," << "average" << "\n";
-
-    for (std::map<std::string,BenchFunction>::iterator it = benchmarks.begin();
-         it != benchmarks.end(); ++it) {
-
-        State state(it->first, elapsedTimeForOne);
-        BenchFunction& func = it->second;
-        func(state);
+    perf_init();
+    if (std::ratio_less_equal<benchmark::clock::period, std::micro>::value) {
+        std::cerr << "WARNING: Clock precision is worse than microsecond - benchmarks may be less accurate!\n";
     }
+    std::cout << "#Benchmark" << "," << "count" << "," << "min(ns)" << "," << "max(ns)" << "," << "average(ns)" << ","
+              << "min_cycles" << "," << "max_cycles" << "," << "average_cycles" << "\n";
+
+    for (const auto &p: benchmarks()) {
+        State state(p.first, elapsedTimeForOne);
+        p.second(state);
+    }
+    perf_fini();
 }
 
-bool State::KeepRunning()
+bool benchmark::State::KeepRunning()
 {
     if (count & countMask) {
       ++count;
       return true;
     }
-    double now;
+    time_point now;
+
+    uint64_t nowCycles;
     if (count == 0) {
-        lastTime = beginTime = now = gettimedouble();
+        lastTime = beginTime = now = clock::now();
+        lastCycles = beginCycles = nowCycles = perf_cpucycles();
     }
     else {
-        now = gettimedouble();
-        double elapsed = now - lastTime;
-        double elapsedOne = elapsed * countMaskInv;
+        now = clock::now();
+        auto elapsed = now - lastTime;
+        auto elapsedOne = elapsed / (countMask + 1);
         if (elapsedOne < minTime) minTime = elapsedOne;
         if (elapsedOne > maxTime) maxTime = elapsedOne;
+
+        // We only use relative values, so don't have to handle 64-bit wrap-around specially
+        nowCycles = perf_cpucycles();
+        uint64_t elapsedOneCycles = (nowCycles - lastCycles) / (countMask + 1);
+        if (elapsedOneCycles < minCycles) minCycles = elapsedOneCycles;
+        if (elapsedOneCycles > maxCycles) maxCycles = elapsedOneCycles;
+
         if (elapsed*128 < maxElapsed) {
           // If the execution was much too fast (1/128th of maxElapsed), increase the count mask by 8x and restart timing.
           // The restart avoids including the overhead of this code in the measurement.
           countMask = ((countMask<<3)|7) & ((1LL<<60)-1);
-          countMaskInv = 1./(countMask+1);
           count = 0;
-          minTime = std::numeric_limits<double>::max();
-          maxTime = std::numeric_limits<double>::min();
+          minTime = duration::max();
+          maxTime = duration::zero();
+          minCycles = std::numeric_limits<uint64_t>::max();
+          maxCycles = std::numeric_limits<uint64_t>::min();
           return true;
         }
         if (elapsed*16 < maxElapsed) {
-          countMask = ((countMask<<1)|1) & ((1LL<<60)-1);
-          countMaskInv = 1./(countMask+1);
+          uint64_t newCountMask = ((countMask<<1)|1) & ((1LL<<60)-1);
+          if ((count & newCountMask)==0) {
+              countMask = newCountMask;
+          }
         }
     }
     lastTime = now;
+    lastCycles = nowCycles;
     ++count;
 
     if (now - beginTime < maxElapsed) return true; // Keep going
 
     --count;
 
+    assert(count != 0 && "count == 0 => (now == 0 && beginTime == 0) => return above");
+
     // Output results
-    double average = (now-beginTime)/count;
-    std::cout << std::fixed << std::setprecision(15) << name << "," << count << "," << minTime << "," << maxTime << "," << average << "\n";
+    // Duration casts are only necessary here because hardware with sub-nanosecond clocks
+    // will lose precision.
+    int64_t min_elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(minTime).count();
+    int64_t max_elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(maxTime).count();
+    int64_t avg_elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>((now-beginTime)/count).count();
+    int64_t averageCycles = (nowCycles-beginCycles)/count;
+    std::cout << std::fixed << std::setprecision(15) << name << "," << count << "," << min_elapsed << "," << max_elapsed << "," << avg_elapsed << ","
+              << minCycles << "," << maxCycles << "," << averageCycles << "\n";
+    std::cout.copyfmt(std::ios(nullptr));
 
     return false;
 }

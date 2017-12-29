@@ -5,18 +5,40 @@ The built-in one is located in `/Applications/Utilities/Terminal.app`.
 
 Preparation
 -----------
-Download and install [Xcode](https://developer.apple.com/xcode/download).
+Install the OS X command line tools:
 
-Once installed, run `xcode-select --install` to install the OS X command line tools.
+`xcode-select --install`
 
-Install [Homebrew](http://brew.sh).
+When the popup appears, click `Install`.
+
+Then install [Homebrew](https://brew.sh).
 
 Dependencies
 ----------------------
 
-    brew install automake berkeley-db4 libtool boost --c++11 miniupnpc openssl pkg-config protobuf --c++11 qt5 libevent
+    brew install automake berkeley-db4 libtool boost --c++11 miniupnpc openssl pkg-config protobuf python3 qt libevent
+
+See [dependencies.md](dependencies.md) for a complete overview.
+
+If you want to build the disk image with `make deploy` (.dmg / optional), you need RSVG
+
+    brew install librsvg
 
 NOTE: Building with Qt4 is still supported, however, could result in a broken UI. Building with Qt5 is recommended.
+
+Berkeley DB
+-----------
+It is recommended to use Berkeley DB 4.8. If you have to build it yourself,
+you can use [the installation script included in contrib/](/contrib/install_db4.sh)
+like so
+
+```shell
+./contrib/install_db4.sh .
+```
+
+from the root of the repository.
+
+**Note**: You only need Berkeley DB if the wallet is enabled (see the section *Disable-Wallet mode* below).
 
 Build Bitcoin Core
 ------------------------
@@ -88,6 +110,6 @@ Uncheck everything except Qt Creator during the installation process.
 Notes
 -----
 
-* Tested on OS X 10.7 through 10.11 on 64-bit Intel processors only.
+* Tested on OS X 10.8 through 10.13 on 64-bit Intel processors only.
 
 * Building with downloaded Qt binaries is not officially supported. See the notes in [#7714](https://github.com/bitcoin/bitcoin/issues/7714)
