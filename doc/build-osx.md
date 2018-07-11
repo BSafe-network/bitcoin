@@ -5,16 +5,18 @@ The built-in one is located in `/Applications/Utilities/Terminal.app`.
 
 Preparation
 -----------
-Download and install [Xcode](https://developer.apple.com/xcode/download).
+Install the OS X command line tools:
 
-Once installed, run `xcode-select --install` to install the OS X command line tools.
+`xcode-select --install`
 
-Install [Homebrew](http://brew.sh).
+When the popup appears, click `Install`.
+
+Then install [Homebrew](http://brew.sh).
 
 Dependencies
 ----------------------
 
-    brew install automake berkeley-db4 libtool boost --c++11 miniupnpc openssl pkg-config protobuf --c++11 qt5 libevent
+    brew install automake berkeley-db4 libtool boost --c++11 miniupnpc openssl pkg-config homebrew/versions/protobuf260 --c++11 qt5 libevent
 
 NOTE: Building with Qt4 is still supported, however, could result in a broken UI. Building with Qt5 is recommended.
 
@@ -88,6 +90,6 @@ Uncheck everything except Qt Creator during the installation process.
 Notes
 -----
 
-* Tested on OS X 10.7 through 10.11 on 64-bit Intel processors only.
+* Tested on OS X 10.8 through 10.12 on 64-bit Intel processors only.
 
 * Building with downloaded Qt binaries is not officially supported. See the notes in [#7714](https://github.com/bitcoin/bitcoin/issues/7714)

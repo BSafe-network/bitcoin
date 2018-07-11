@@ -51,7 +51,7 @@ public:
         int nUBuckets = ADDRMAN_NEW_BUCKET_COUNT ^ (1 << 30);
         s << nUBuckets;
 
-        CAddress addr = CAddress(CService("252.1.1.1", 7777));
+        CAddress addr = CAddress(CService("252.1.1.1", 7777), NODE_NONE);
         CAddrInfo info = CAddrInfo(addr, CNetAddr("252.2.2.2"));
         s << info;
     }
@@ -79,9 +79,9 @@ BOOST_AUTO_TEST_CASE(caddrdb_read)
     CService addr3 = CService("250.7.3.3", 9999);
 
     // Add three addresses to new table.
-    addrmanUncorrupted.Add(CAddress(addr1), CService("252.5.1.1", 8333));
-    addrmanUncorrupted.Add(CAddress(addr2), CService("252.5.1.1", 8333));
-    addrmanUncorrupted.Add(CAddress(addr3), CService("252.5.1.1", 8333));
+    addrmanUncorrupted.Add(CAddress(addr1, NODE_NONE), CService("252.5.1.1", 8333));
+    addrmanUncorrupted.Add(CAddress(addr2, NODE_NONE), CService("252.5.1.1", 8333));
+    addrmanUncorrupted.Add(CAddress(addr3, NODE_NONE), CService("252.5.1.1", 8333));
 
     // Test that the de-serialization does not throw an exception.
     CDataStream ssPeers1 = AddrmanToStream(addrmanUncorrupted);
@@ -140,6 +140,28 @@ BOOST_AUTO_TEST_CASE(caddrdb_read_corrupted)
     BOOST_CHECK(addrman2.size() == 0);
     adb.Read(addrman2, ssPeers2);
     BOOST_CHECK(addrman2.size() == 0);
+}
+
+BOOST_AUTO_TEST_CASE(cnode_simple_test)
+{
+    SOCKET hSocket = INVALID_SOCKET;
+
+    in_addr ipv4Addr;
+    ipv4Addr.s_addr = 0xa0b0c001;
+    
+    CAddress addr = CAddress(CService(ipv4Addr, 7777), NODE_NETWORK);
+    std::string pszDest = "";
+    bool fInboundIn = false;
+
+    // Test that fFeeler is false by default.
+    CNode* pnode1 = new CNode(hSocket, addr, pszDest, fInboundIn);
+    BOOST_CHECK(pnode1->fInbound == false);
+    BOOST_CHECK(pnode1->fFeeler == false);
+
+    fInboundIn = true;
+    CNode* pnode2 = new CNode(hSocket, addr, pszDest, fInboundIn);
+    BOOST_CHECK(pnode2->fInbound == true);
+    BOOST_CHECK(pnode2->fFeeler == false);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

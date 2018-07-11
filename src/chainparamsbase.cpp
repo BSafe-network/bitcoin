@@ -13,6 +13,7 @@
 const std::string CBaseChainParams::MAIN = "main";
 const std::string CBaseChainParams::TESTNET = "test";
 const std::string CBaseChainParams::REGTEST = "regtest";
+const std::string CBaseChainParams::BSAFENET = "bsafenet";
 
 void AppendParamsHelpMessages(std::string& strUsage, bool debugHelp)
 {
@@ -21,6 +22,7 @@ void AppendParamsHelpMessages(std::string& strUsage, bool debugHelp)
     if (debugHelp) {
         strUsage += HelpMessageOpt("-regtest", "Enter regression test mode, which uses a special chain in which blocks can be solved instantly. "
                                    "This is intended for regression testing tools and app development.");
+        strUsage += HelpMessageOpt("-bsafenet", "Enter segregated witness test mode on bsafenet. ");
     }
 }
 
@@ -50,6 +52,20 @@ public:
     }
 };
 static CBaseTestNetParams testNetParams;
+
+/**
+ * bsafenet
+ */
+class CBaseSafeNetParams : public CBaseChainParams
+{
+public:
+    CBaseSafeNetParams()
+    {
+        nRPCPort = 34822;
+        strDataDir = "bsafenet";
+    }
+};
+static CBaseSafeNetParams bSafeParams;
 
 /*
  * Regression test
@@ -81,6 +97,8 @@ CBaseChainParams& BaseParams(const std::string& chain)
         return testNetParams;
     else if (chain == CBaseChainParams::REGTEST)
         return regTestParams;
+    else if (chain == CBaseChainParams::BSAFENET)
+        return bSafeParams;
     else
         throw std::runtime_error(strprintf("%s: Unknown chain %s.", __func__, chain));
 }
@@ -97,10 +115,16 @@ std::string ChainNameFromCommandLine()
 
     if (fTestNet && fRegTest)
         throw std::runtime_error("Invalid combination of -regtest and -testnet.");
+    bool fbsafeNet = GetBoolArg("-bsafenet", false);
+
+    if ((int)fRegTest + (int)fTestNet + (int)fbsafeNet > 1)
+        throw std::runtime_error("Invalid combination of -regtest, -testnet, -bsafenet.");
     if (fRegTest)
         return CBaseChainParams::REGTEST;
     if (fTestNet)
         return CBaseChainParams::TESTNET;
+    if (fbsafeNet)
+        return CBaseChainParams::BSAFENET;
     return CBaseChainParams::MAIN;
 }
 
