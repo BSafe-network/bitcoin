@@ -3,7 +3,7 @@
     <name>AddressBookPage</name>
     <message>
         <source>Right-click to edit address or label</source>
-        <translation>Eskuin-klika helbidea edo etiketa editatzeko</translation>
+        <translation>Klikatu eskuinean helbidea edo etiketa aldatzeko</translation>
     </message>
     <message>
         <source>Create a new address</source>
@@ -15,7 +15,7 @@
     </message>
     <message>
         <source>Copy the currently selected address to the system clipboard</source>
-        <translation>Kopiatu hautatutako helbidea sistemaren arbelera</translation>
+        <translation>Kopiatu hautatutako helbidea sistemaren arbelean</translation>
     </message>
     <message>
         <source>&amp;Copy</source>
@@ -26,16 +26,16 @@
         <translation>&amp;Itxi</translation>
     </message>
     <message>
-        <source>&amp;Copy Address</source>
-        <translation>&amp;Kopiatu helbidea</translation>
-    </message>
-    <message>
         <source>Delete the currently selected address from the list</source>
         <translation>Ezabatu aukeratutako helbideak listatik</translation>
     </message>
     <message>
+        <source>Enter address or label to search</source>
+        <translation>Bilatzeko, helbide edo etiketa sartu</translation>
+    </message>
+    <message>
         <source>Export the data in the current tab to a file</source>
-        <translation>Esportatu datuak uneko fitxategian</translation>
+        <translation>Uneko fitxategian datuak esportatu</translation>
     </message>
     <message>
         <source>&amp;Export</source>
@@ -47,11 +47,11 @@
     </message>
     <message>
         <source>Choose the address to send coins to</source>
-        <translation>Aukeratu helbidea txanponak bidaltzeko</translation>
+        <translation>Dirua bidaltzeko helbidea hautatu</translation>
     </message>
     <message>
         <source>Choose the address to receive coins with</source>
-        <translation>Aukeratu helbidea txanponak jasotzeko</translation>
+        <translation>Dirua jasotzeko helbidea hautatu</translation>
     </message>
     <message>
         <source>C&amp;hoose</source>
@@ -67,15 +67,19 @@
     </message>
     <message>
         <source>These are your Bitcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Hauek dira zure Bitcoin helbideak dirua bidaltzeko. Beti egiaztatu diru-kantitatea eta jasotzeko helbidea bidali baino lehen.</translation>
+        <translation>Hauek dira zuk dirua jaso dezaketen Bitcoin helbideak. Egiaztatu beti diru-kopurua eta dirua jasoko duen helbidea zuzen egon daitezen, txanponak bidali baino lehen.</translation>
     </message>
     <message>
         <source>These are your Bitcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Hauek dira zure Bitcoin helbideak dirua jasotzeko. Gomendagarria da erabiltzea jasotzeko helbide berri bat operazio bakoitzeko.</translation>
+        <translation>Hauek dira zure dirua jasotzeko Bitcoin helbideak. Gomendagarria da, operazio bakoitza helbide berri batekin egitea.</translation>
+    </message>
+    <message>
+        <source>&amp;Copy Address</source>
+        <translation>&amp;Helbidea kopiatu</translation>
     </message>
     <message>
         <source>Copy &amp;Label</source>
-        <translation>Kopiatu &amp;Etiketa</translation>
+        <translation>Etiketa &amp;Kopiatu</translation>
     </message>
     <message>
         <source>&amp;Edit</source>
@@ -83,7 +87,7 @@
     </message>
     <message>
         <source>Export Address List</source>
-        <translation>Esportatu helbide lista</translation>
+        <translation>Helbide lista esportatu</translation>
     </message>
     <message>
         <source>Comma separated file (*.csv)</source>
@@ -91,18 +95,18 @@
     </message>
     <message>
         <source>Exporting Failed</source>
-        <translation>Esportatua okerra</translation>
+        <translation>Esportazioak huts egin du</translation>
     </message>
     <message>
         <source>There was an error trying to save the address list to %1. Please try again.</source>
-        <translation>Errakuntza bat egon da gordetzen %1 helbide listan. Mesedez, saiatu berriro.</translation>
+        <translation>Akats bat egon da helbide lista %1-ean gordetzen sahiatzean. Mesedez, saiatu berriro.</translation>
     </message>
 </context>
 <context>
     <name>AddressTableModel</name>
     <message>
         <source>Label</source>
-        <translation>Etiketa</translation>
+        <translation>Izendapen</translation>
     </message>
     <message>
         <source>Address</source>
@@ -110,18 +114,18 @@
     </message>
     <message>
         <source>(no label)</source>
-        <translation>(etiketarik ez)</translation>
+        <translation>(izendapenik ez)</translation>
     </message>
 </context>
 <context>
     <name>AskPassphraseDialog</name>
     <message>
         <source>Passphrase Dialog</source>
-        <translation>Pasahitza dialogoa</translation>
+        <translation>Pasahitzaren dialogoa</translation>
     </message>
     <message>
         <source>Enter passphrase</source>
-        <translation>Sartu pasahitza</translation>
+        <translation>Pasahitza sartu</translation>
     </message>
     <message>
         <source>New passphrase</source>
@@ -129,63 +133,59 @@
     </message>
     <message>
         <source>Repeat new passphrase</source>
-        <translation>Errepikatu pasahitz berria</translation>
+        <translation>Pasahitz berria errepiikatu</translation>
     </message>
     <message>
         <source>Encrypt wallet</source>
-        <translation>Enkriptatu zorroa</translation>
+        <translation>Diruzorroa enkriptatu</translation>
     </message>
     <message>
         <source>This operation needs your wallet passphrase to unlock the wallet.</source>
-        <translation>Eragiketa honek zorroaren pasahitza behar du zorroa desblokeatzeko.</translation>
+        <translation>Diruzorroaren pasahitza behar du eragiketa honek, diruzorroa desblokeatzeko.</translation>
     </message>
     <message>
         <source>Unlock wallet</source>
-        <translation>Desblokeatu zorroa</translation>
+        <translation>Diruzorroa desblokeatu</translation>
     </message>
     <message>
         <source>This operation needs your wallet passphrase to decrypt the wallet.</source>
-        <translation>Eragiketa honek zure zorroaren pasahitza behar du, zorroa desenkriptatzeko.</translation>
+        <translation>Eragiketa honek zure diruzorroaren pasahitza behar du, diruzorroa desenkriptatzeko.</translation>
     </message>
     <message>
         <source>Decrypt wallet</source>
-        <translation>Desenkriptatu zorroa</translation>
+        <translation>Diruzorroa desenkriptatu</translation>
     </message>
     <message>
         <source>Change passphrase</source>
-        <translation>Aldatu pasahitza</translation>
+        <translation>Pasahitza aldatu</translation>
     </message>
     <message>
         <source>Confirm wallet encryption</source>
-        <translation>Berretsi zorroaren enkriptazioa</translation>
+        <translation>Diruorroaren enkriptazioa berretsi</translation>
     </message>
     <message>
         <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR BITCOINS&lt;/b&gt;!</source>
-        <translation>Abisua: Zuk enkriptatzen baduzu zure diruzorroa eta zure pasahitza galtzen baduzu, &lt;b&gt;BITCOIN GUZTIAK GALDUKO DITUZU&lt;/b&gt;!</translation>
+        <translation>Abisua: Diruzorroa enkriptatzen baduzu eta zure pasahitza galtzen baduzu, &lt;b&gt;BITCOIN GUZTIAK GALDUKO DITUZU&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
-        <translation>Seguru zaude nahi duzula zure diruzorroa enkriptatu?</translation>
-    </message>
-    <message>
-        <source>Bitcoin Core will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your bitcoins from being stolen by malware infecting your computer.</source>
-        <translation>Bitcoin Core orain itxiko da enkriptazio prozezua amaitzeko. Gogoratu enkriptatzean zure diruzorroa ez duzula guztiz babesten zure Bitcoinak lapurretatik infektatzen zure ordenagailua Malwareekin.</translation>
-    </message>
-    <message>
-        <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
-        <translation>GARRANTZITSUA: Aurreko seguritate-kopiak ordeztuko dire berriekin, enkriptatutak. Segurtasun arrazoigaitik, aurreko kopiak ezin dira erabili hasiko zarenean zure diruzorro enkriptatu berriarekin.</translation>
+        <translation>Seguru al zaude, zure diruzorroa enkriptatu nahi duzula?</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
         <translation>Zorroa enkriptatuta</translation>
     </message>
     <message>
+        <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
+        <translation>GARRANTZITSUA: Diruzorroaren segurtasun-kopia, wallet.dat, erabilezina bihurtuko da enkriptazioa burutu ondoren. Ondorioz, segurtasun-kopia berriekin ordezkatu beharko zenituzke zure jada eginik dituzun diruzorroaren kopiak.</translation>
+    </message>
+    <message>
         <source>Wallet encryption failed</source>
-        <translation>Zorroaren enkriptazioak huts egin du</translation>
+        <translation>Diruzorroaren enkriptazioak huts egin du</translation>
     </message>
     <message>
         <source>Wallet encryption failed due to an internal error. Your wallet was not encrypted.</source>
-        <translation>Zorroaren enkriptazioak huts egin du barne-errore baten ondorioz. Zure zorroa ez da enkriptatu.</translation>
+        <translation>Diruzorroaren enkriptazioak huts egin du barne-akats baten ondorioz. Zure diruzorroa ez da enkriptatu.</translation>
     </message>
     <message>
         <source>The supplied passphrases do not match.</source>
@@ -219,7 +219,7 @@
     </message>
     <message>
         <source>Show general overview of wallet</source>
-        <translation>Ikusi zorroaren begirada orokorra</translation>
+        <translation>Diruzorroaren begirada orokorra ikusi</translation>
     </message>
     <message>
         <source>&amp;Transactions</source>
@@ -235,15 +235,15 @@
     </message>
     <message>
         <source>Quit application</source>
-        <translation>Irten aplikaziotik</translation>
+        <translation>Aplikaziotik irten</translation>
     </message>
     <message>
         <source>About &amp;Qt</source>
-        <translation>&amp;Qt-ari buruz</translation>
+        <translation>&amp;Qt-ri buruz</translation>
     </message>
     <message>
         <source>Show information about Qt</source>
-        <translation>Erakutsi Bitcoin-i buruzko informazioa</translation>
+        <translation>Erakutsi Qt-ren buruzko informazioa</translation>
     </message>
     <message>
         <source>&amp;Options...</source>
@@ -251,11 +251,11 @@
     </message>
     <message>
         <source>&amp;Receiving addresses...</source>
-        <translation>Helbideak jasotzen</translation>
+        <translation>&amp;Helbideak jasotzen...</translation>
     </message>
     <message>
         <source>Change the passphrase used for wallet encryption</source>
-        <translation>Aldatu zorroa enkriptatzeko erabilitako pasahitza</translation>
+        <translation>Diruzorroa enkriptatzeko erabilitako pasahitza aldatu</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -275,7 +275,7 @@
     </message>
     <message>
         <source>Up to date</source>
-        <translation>Egunean</translation>
+        <translation>Eguneratua</translation>
     </message>
     <message>
         <source>Catching up...</source>
@@ -287,7 +287,7 @@
     </message>
     <message>
         <source>Incoming transaction</source>
-        <translation>Sarrerako transakzioa</translation>
+        <translation>Sartutako transakzioa</translation>
     </message>
     <message>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt;</source>
@@ -297,15 +297,12 @@
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>Zorroa &lt;b&gt;enkriptatuta&lt;/b&gt; eta &lt;b&gt;blokeatuta&lt;/b&gt; dago une honetan</translation>
     </message>
-</context>
-<context>
-    <name>ClientModel</name>
     </context>
 <context>
     <name>CoinControlDialog</name>
     <message>
         <source>Amount:</source>
-        <translation>Kopurua</translation>
+        <translation>Kopurua:</translation>
     </message>
     <message>
         <source>Amount</source>
@@ -317,22 +314,22 @@
     </message>
     <message>
         <source>Copy address</source>
-        <translation>Kopiatu helbidea</translation>
+        <translation>Helbidea kopiatu</translation>
     </message>
     <message>
         <source>Copy label</source>
-        <translation>Kopiatu etiketa</translation>
+        <translation>Etiketa kopiatu</translation>
     </message>
     <message>
         <source>(no label)</source>
-        <translation>(etiketarik ez)</translation>
+        <translation>(izendapenik ez)</translation>
     </message>
     </context>
 <context>
     <name>EditAddressDialog</name>
     <message>
         <source>Edit Address</source>
-        <translation>Editatu helbidea</translation>
+        <translation>Helbidea editatu</translation>
     </message>
     <message>
         <source>&amp;Label</source>
@@ -343,32 +340,24 @@
         <translation>&amp;Helbidea</translation>
     </message>
     <message>
-        <source>New receiving address</source>
-        <translation>Jasotzeko helbide berria</translation>
-    </message>
-    <message>
         <source>New sending address</source>
         <translation>Bidaltzeko helbide berria</translation>
     </message>
     <message>
         <source>Edit receiving address</source>
-        <translation>Editatu jasotzeko helbidea</translation>
+        <translation>Jasotzeko helbidea editatu</translation>
     </message>
     <message>
         <source>Edit sending address</source>
-        <translation>Editatu bidaltzeko helbidea</translation>
-    </message>
-    <message>
-        <source>The entered address "%1" is already in the address book.</source>
-        <translation>Sartu berri den helbidea, "%1", helbide-liburuan dago jadanik.</translation>
+        <translation>Bidaltzeko helbidea editatu</translation>
     </message>
     <message>
         <source>Could not unlock wallet.</source>
-        <translation>Ezin desblokeatu zorroa.</translation>
+        <translation>Ezin da diruzorroa desblokeatu.</translation>
     </message>
     <message>
         <source>New key generation failed.</source>
-        <translation>Gako berriaren sorrerak huts egin du.</translation>
+        <translation>Giltza berriaren sorrerak huts egin du.</translation>
     </message>
 </context>
 <context>
@@ -379,6 +368,13 @@
     </context>
 <context>
     <name>Intro</name>
+    </context>
+<context>
+    <name>ModalOverlay</name>
+    <message>
+        <source>Form</source>
+        <translation>Inprimakia</translation>
+    </message>
     </context>
 <context>
     <name>OpenURIDialog</name>
@@ -409,6 +405,13 @@
         <source>Amount</source>
         <translation>Kopurua</translation>
     </message>
+    <message>
+        <source>unknown</source>
+        <translation>ezezaguna</translation>
+    </message>
+</context>
+<context>
+    <name>QObject::QObject</name>
     </context>
 <context>
     <name>QRImageWidget</name>
@@ -420,7 +423,7 @@
     <name>ReceiveCoinsDialog</name>
     <message>
         <source>&amp;Amount:</source>
-        <translation>Kopurua</translation>
+        <translation>&amp;Kopurua:</translation>
     </message>
     <message>
         <source>&amp;Label:</source>
@@ -428,18 +431,18 @@
     </message>
     <message>
         <source>&amp;Message:</source>
-        <translation>Mezua</translation>
+        <translation>&amp;Mezua:</translation>
     </message>
     <message>
         <source>Copy label</source>
-        <translation>Kopiatu etiketa</translation>
+        <translation>Etiketa kopiatu</translation>
     </message>
     </context>
 <context>
     <name>ReceiveRequestDialog</name>
     <message>
         <source>Copy &amp;Address</source>
-        <translation>&amp;Kopiatu helbidea</translation>
+        <translation>&amp;Helbidea kopiatu</translation>
     </message>
     <message>
         <source>Address</source>
@@ -451,7 +454,7 @@
     </message>
     <message>
         <source>Label</source>
-        <translation>Etiketa</translation>
+        <translation>Izendapen</translation>
     </message>
     <message>
         <source>Message</source>
@@ -466,34 +469,30 @@
     </message>
     <message>
         <source>Label</source>
-        <translation>Etiketa</translation>
+        <translation>Izendapen</translation>
     </message>
     <message>
         <source>Message</source>
         <translation>Mezua</translation>
     </message>
     <message>
-        <source>Amount</source>
-        <translation>Kopurua</translation>
-    </message>
-    <message>
         <source>(no label)</source>
-        <translation>(etiketarik ez)</translation>
+        <translation>(izendapenik ez)</translation>
     </message>
     </context>
 <context>
     <name>SendCoinsDialog</name>
     <message>
         <source>Send Coins</source>
-        <translation>Bidali txanponak</translation>
+        <translation>Txanponak bidali</translation>
     </message>
     <message>
         <source>Amount:</source>
-        <translation>Kopurua</translation>
+        <translation>Kopurua:</translation>
     </message>
     <message>
         <source>Send to multiple recipients at once</source>
-        <translation>Bidali hainbat jasotzaileri batera</translation>
+        <translation>Hainbat jasotzaileri batera bidali</translation>
     </message>
     <message>
         <source>Balance:</source>
@@ -501,21 +500,21 @@
     </message>
     <message>
         <source>Confirm the send action</source>
-        <translation>Berretsi bidaltzeko ekintza</translation>
+        <translation>Bidalketa berretsi</translation>
     </message>
     <message>
         <source>Confirm send coins</source>
-        <translation>Berretsi txanponak bidaltzea</translation>
+        <translation>Txanponen bidalketa berretsi</translation>
     </message>
     <message>
         <source>The amount to pay must be larger than 0.</source>
-        <translation>Ordaintzeko kopurua 0 baino handiagoa izan behar du.</translation>
+        <translation>Ordaintzeko kopurua, 0 baino handiagoa izan behar du.</translation>
     </message>
     <message>
         <source>(no label)</source>
-        <translation>(etiketarik ez)</translation>
+        <translation>(izendapenik ez)</translation>
     </message>
-    </context>
+</context>
 <context>
     <name>SendCoinsEntry</name>
     <message>
@@ -527,10 +526,6 @@
         <translation>Ordaindu &amp;honi:</translation>
     </message>
     <message>
-        <source>Enter a label for this address to add it to your address book</source>
-        <translation>Sartu etiketa bat helbide honetarako, eta gehitu zure helbide-liburuan</translation>
-    </message>
-    <message>
         <source>&amp;Label:</source>
         <translation>&amp;Etiketa:</translation>
     </message>
@@ -540,7 +535,7 @@
     </message>
     <message>
         <source>Paste address from clipboard</source>
-        <translation>Itsatsi helbidea arbeletik</translation>
+        <translation>Arbeletik helbidea itsatsi</translation>
     </message>
     <message>
         <source>Alt+P</source>
@@ -548,12 +543,19 @@
     </message>
     <message>
         <source>Message:</source>
-        <translation>Mezua</translation>
+        <translation>Mezua:</translation>
     </message>
     <message>
         <source>Pay To:</source>
-        <translation>Ordaindu honi:</translation>
+        <translation>Honi ordaindu:</translation>
     </message>
+    <message>
+        <source>Enter a label for this address to add it to your address book</source>
+        <translation>Emaiozu helbide honi izenburu bat, zure helbide-liburuan horrela ager dadin</translation>
+    </message>
+</context>
+<context>
+    <name>SendConfirmationDialog</name>
     </context>
 <context>
     <name>ShutdownWindow</name>
@@ -566,7 +568,7 @@
     </message>
     <message>
         <source>Paste address from clipboard</source>
-        <translation>Itsatsi helbidea arbeletik</translation>
+        <translation>Arbeletik helbidea itsatsi</translation>
     </message>
     <message>
         <source>Alt+P</source>
@@ -595,11 +597,15 @@
     </message>
     <message>
         <source>%1 confirmations</source>
-        <translation>%1 konfirmazioak</translation>
+        <translation>%1 konfirmazio</translation>
     </message>
     <message>
         <source>Date</source>
         <translation>Data</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>ezezaguna</translation>
     </message>
     <message>
         <source>Message</source>
@@ -607,32 +613,20 @@
     </message>
     <message>
         <source>Transaction</source>
-        <translation>Transakzioaren</translation>
+        <translation>Transakzioa</translation>
     </message>
     <message>
         <source>Amount</source>
         <translation>Kopurua</translation>
     </message>
-    <message>
-        <source>, has not been successfully broadcast yet</source>
-        <translation>, ez da arrakastaz emititu oraindik</translation>
-    </message>
-    <message>
-        <source>unknown</source>
-        <translation>ezezaguna</translation>
-    </message>
-</context>
+    </context>
 <context>
     <name>TransactionDescDialog</name>
     <message>
-        <source>Transaction details</source>
-        <translation>Transakzioaren xehetasunak</translation>
-    </message>
-    <message>
         <source>This pane shows a detailed description of the transaction</source>
-        <translation>Panel honek transakzioaren deskribapen xehea erakusten du</translation>
+        <translation>Panel honek transakzien deskribapen xehea azaltzen du</translation>
     </message>
-</context>
+    </context>
 <context>
     <name>TransactionTableModel</name>
     <message>
@@ -644,6 +638,10 @@
         <translation>Mota</translation>
     </message>
     <message>
+        <source>Label</source>
+        <translation>Izendapen</translation>
+    </message>
+    <message>
         <source>Open until %1</source>
         <translation>Zabalik %1 arte</translation>
     </message>
@@ -652,36 +650,32 @@
         <translation>Konfirmatuta (%1 konfirmazio)</translation>
     </message>
     <message>
-        <source>This block was not received by any other nodes and will probably not be accepted!</source>
-        <translation>Bloke hau ez du beste inongo nodorik jaso, eta seguruenik ez da onartuko!</translation>
-    </message>
-    <message>
         <source>Generated but not accepted</source>
         <translation>Sortua, baina ez onartua</translation>
     </message>
     <message>
-        <source>Label</source>
-        <translation>Etiketa</translation>
-    </message>
-    <message>
         <source>Received with</source>
-        <translation>Jasota honekin: </translation>
+        <translation>Honekin jasoa </translation>
     </message>
     <message>
         <source>Sent to</source>
-        <translation>Hona bidalia: </translation>
+        <translation>Hona bidalia</translation>
     </message>
     <message>
         <source>Payment to yourself</source>
-        <translation>Ordainketa zeure buruari</translation>
+        <translation>Zure buruarentzat ordainketa</translation>
     </message>
     <message>
         <source>Mined</source>
-        <translation>Bildua</translation>
+        <translation>Meatua</translation>
     </message>
     <message>
         <source>(n/a)</source>
         <translation>(n/a)</translation>
+    </message>
+    <message>
+        <source>(no label)</source>
+        <translation>(izendapenik ez)</translation>
     </message>
     <message>
         <source>Transaction status. Hover over this field to show number of confirmations.</source>
@@ -708,23 +702,23 @@
     </message>
     <message>
         <source>Today</source>
-        <translation>Gaur</translation>
+        <translation>Gaurkoak</translation>
     </message>
     <message>
         <source>This week</source>
-        <translation>Aste honetan</translation>
+        <translation>Aste honetankoak</translation>
     </message>
     <message>
         <source>This month</source>
-        <translation>Hil honetan</translation>
+        <translation>Hil honetakoak</translation>
     </message>
     <message>
         <source>Last month</source>
-        <translation>Azken hilean</translation>
+        <translation>Azken hilekoak</translation>
     </message>
     <message>
         <source>This year</source>
-        <translation>Aurten</translation>
+        <translation>Aurtengoak</translation>
     </message>
     <message>
         <source>Range...</source>
@@ -732,11 +726,11 @@
     </message>
     <message>
         <source>Received with</source>
-        <translation>Jasota honekin: </translation>
+        <translation>Honekin jasoa </translation>
     </message>
     <message>
         <source>Sent to</source>
-        <translation>Hona bidalia: </translation>
+        <translation>Hona bidalia</translation>
     </message>
     <message>
         <source>To yourself</source>
@@ -744,15 +738,11 @@
     </message>
     <message>
         <source>Mined</source>
-        <translation>Bildua</translation>
+        <translation>Meatua</translation>
     </message>
     <message>
         <source>Other</source>
         <translation>Beste</translation>
-    </message>
-    <message>
-        <source>Enter address or label to search</source>
-        <translation>Sartu bilatzeko helbide edo etiketa</translation>
     </message>
     <message>
         <source>Min amount</source>
@@ -760,15 +750,11 @@
     </message>
     <message>
         <source>Copy address</source>
-        <translation>Kopiatu helbidea</translation>
+        <translation>Helbidea kopiatu</translation>
     </message>
     <message>
         <source>Copy label</source>
-        <translation>Kopiatu etiketa</translation>
-    </message>
-    <message>
-        <source>Exporting Failed</source>
-        <translation>Esportatua okerra</translation>
+        <translation>Etiketa kopiatu</translation>
     </message>
     <message>
         <source>Comma separated file (*.csv)</source>
@@ -784,11 +770,15 @@
     </message>
     <message>
         <source>Label</source>
-        <translation>Etiketa</translation>
+        <translation>Izendapen</translation>
     </message>
     <message>
         <source>Address</source>
         <translation>Helbidea</translation>
+    </message>
+    <message>
+        <source>Exporting Failed</source>
+        <translation>Esportazioak huts egin du</translation>
     </message>
     </context>
 <context>
@@ -801,9 +791,9 @@
     <name>WalletModel</name>
     <message>
         <source>Send Coins</source>
-        <translation>Bidali txanponak</translation>
+        <translation>Txanponak bidali</translation>
     </message>
-</context>
+    </context>
 <context>
     <name>WalletView</name>
     <message>
@@ -812,19 +802,11 @@
     </message>
     <message>
         <source>Export the data in the current tab to a file</source>
-        <translation>Esportatu datuak uneko fitxategian</translation>
+        <translation>Uneko fitxategian datuak esportatu</translation>
     </message>
     </context>
 <context>
     <name>bitcoin-core</name>
-    <message>
-        <source>Options:</source>
-        <translation>Aukerak</translation>
-    </message>
-    <message>
-        <source>This help message</source>
-        <translation>Laguntza mezu hau</translation>
-    </message>
     <message>
         <source>Rescanning...</source>
         <translation>Birbilatzen...</translation>

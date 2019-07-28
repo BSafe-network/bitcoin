@@ -8,14 +8,14 @@ https://bitcoincore.org
 What is Bitcoin?
 ----------------
 
-Bitcoin is an experimental new digital currency that enables instant payments to
+Bitcoin is an experimental digital currency that enables instant payments to
 anyone, anywhere in the world. Bitcoin uses peer-to-peer technology to operate
 with no central authority: managing transactions and issuing money are carried
 out collectively by the network. Bitcoin Core is the name of open source
 software which enables the use of this currency.
 
 For more information, as well as an immediately useable, binary version of
-the Bitcoin Core software, see https://bitcoin.org/en/download, or read the
+the Bitcoin Core software, see https://bitcoincore.org/en/download/, or read the
 [original whitepaper](https://bitcoincore.org/bitcoin.pdf).
 
 License
@@ -33,12 +33,6 @@ regularly to indicate new official, stable release versions of Bitcoin Core.
 
 The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).
 
-The developer [mailing list](https://lists.linuxfoundation.org/mailman/listinfo/bitcoin-dev)
-should be used to discuss complicated or controversial changes before working
-on a patch set.
-
-Developer IRC can be found on Freenode at #bitcoin-core-dev.
-
 Testing
 -------
 
@@ -49,15 +43,16 @@ lots of money.
 
 ### Automated Testing
 
-Developers are strongly encouraged to write [unit tests](/doc/unit-tests.md) for new code, and to
+Developers are strongly encouraged to write [unit tests](src/test/README.md) for new code, and to
 submit new unit tests for old code. Unit tests can be compiled and run
-(assuming they weren't disabled in configure) with: `make check`
+(assuming they weren't disabled in configure) with: `make check`. Further details on running
+and extending unit tests can be found in [/src/test/README.md](/src/test/README.md).
 
-There are also [regression and integration tests](/qa) of the RPC interface, written
+There are also [regression and integration tests](/test), written
 in Python, that are run automatically on the build server.
-These tests can be run (if the [test dependencies](/qa) are installed) with: `qa/pull-tester/rpc-tests.py`
+These tests can be run (if the [test dependencies](/test) are installed) with: `test/functional/test_runner.py`
 
-The Travis CI system makes sure that every pull request is built for Windows, Linux, and OS X, and that unit/sanity tests are run automatically.
+The Travis CI system makes sure that every pull request is built for Windows, Linux, and macOS, and that unit/sanity tests are run automatically.
 
 ### Manual Quality Assurance (QA) Testing
 
